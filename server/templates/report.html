@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تقرير مالي تنفيذي</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+
+      body {
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
+        background-color: #ffffff;
+        color: #2d3748; /* Slate 800 for better readability */
+        margin: 0;
+        padding: 40px; /* Kept standard padding for PDF safety */
+        direction: rtl;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .header {
+        border-bottom: 2px solid #e2e8f0; /* Slate 200 */
+        padding-bottom: 24px;
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1a202c; /* Slate 900 */
+      }
+
+      .meta {
+        text-align: left;
+        font-size: 12px;
+        color: #718096; /* Slate 500 */
+        line-height: 1.5;
+      }
+
+      h1 {
+        font-size: 26px; /* Slightly larger/bolder */
+        font-weight: 700;
+        color: #1a202c;
+        margin: 0 0 6px 0;
+      }
+
+      /* Executive Summary Polish */
+      .summary-box {
+        background-color: #f8fafc; /* Very light slate background */
+        padding: 24px 32px;
+        border-radius: 6px; /* Subtler radius */
+        margin-bottom: 40px;
+        font-size: 15px;
+        line-height: 1.7; /* Airier text */
+        border-right: 4px solid #2d3748; /* Professional accent */
+        color: #2d3748;
+      }
+
+      h2 {
+        font-size: 18px;
+        color: #1a202c;
+        font-weight: 700;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 12px;
+        margin-top: 40px;
+        margin-bottom: 24px;
+        letter-spacing: -0.01em;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: separate; /* Changed for border-radius on rows if needed, or spacing */
+        border-collapse: collapse; /* Stick to collapse for clean lines */
+        margin-bottom: 40px;
+      }
+
+      th,
+      td {
+        text-align: right;
+        padding: 16px 20px; /* Increased padding */
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      th {
+        background-color: #f8fafc;
+        font-weight: 600;
+        color: #4a5568; /* Slate 600 */
+        font-size: 13px;
+        text-transform: uppercase; /* LTR only, but good practice */
+        letter-spacing: 0.02em;
+      }
+
+      /* Row highlighting logic */
+      .row-highlight td {
+        background-color: #fafbfc; /* Extremely subtle highlight for key rows */
+        font-weight: 600;
+        color: #1a202c;
+      }
+
+      .kpi-value {
+        font-weight: 700;
+        font-size: 15px;
+        color: #1a202c;
+      }
+
+      /* Delta Pills */
+      .kpi-delta {
+        font-size: 13px;
+        font-weight: 600;
+        direction: ltr;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4px 10px;
+        border-radius: 99px; /* Pill shape */
+        min-width: 60px;
+      }
+
+      .positive {
+        background-color: #f0fdf4; /* Green 50 */
+        color: #15803d; /* Green 700 */
+      }
+      .negative {
+        background-color: #fef2f2; /* Red 50 */
+        color: #b91c1c; /* Red 700 */
+      }
+      .neutral {
+        background-color: #f1f5f9; /* Slate 100 */
+        color: #64748b; /* Slate 500 */
+      }
+
+      ul {
+        padding-right: 20px;
+        margin: 0;
+      }
+
+      li {
+        margin-bottom: 14px; /* Increased spacing */
+        line-height: 1.6;
+        color: #4a5568;
+      }
+
+      /* Subtle bullet color tweak if possible, sticking to default for now but ensuring spacing */
+
+      .footer {
+        margin-top: 80px;
+        padding-top: 24px;
+        border-top: 1px solid #e2e8f0;
+        text-align: center;
+        font-size: 11px;
+        color: #a0aec0;
+        font-family: sans-serif; /* Cleaner footer font */
+      }
+
+      .page-break {
+        page-break-after: always;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div>
+        <h1>تقرير مالي تنفيذي</h1>
+        <div style="font-size: 13px; color: #718096; margin-top: 4px">نبراس للتحليل المالي</div>
+      </div>
+      <div class="meta">
+        <div>تاريخ التقرير: {{ timestamp }}</div>
+        <div>نوع التقرير: تحليل أداء شهري</div>
+      </div>
+    </div>
+
+    <div class="summary-box">
+      <strong style="display: block; margin-bottom: 12px; color: #1a202c; font-size: 16px"
+        >الملخص التنفيذي</strong
+      >
+      {{ summary }}
+    </div>
+
+    <h2>المؤشرات المالية الرئيسية (KPIs)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>المؤشر</th>
+          <th>القيمة</th>
+          <th>التغير</th>
+          <th>ملاحظات</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for kpi in kpis %}
+        <tr
+          class="{% if 'إجمالي الإيرادات' in kpi.name or 'صافي الربح' in kpi.name %}row-highlight{% endif %}"
+        >
+          <td>{{ kpi.name }}</td>
+          <td class="kpi-value">{{ kpi.value }}</td>
+          <td>
+            <span
+              class="kpi-delta {% if '+' in kpi.delta %}positive{% elif '-' in kpi.delta or 'خسارة' in kpi.delta %}negative{% else %}neutral{% endif %}"
+            >
+              {{ kpi.delta }}
+            </span>
+          </td>
+          <td style="font-size: 13px; color: #64748b; max-width: 250px">{{ kpi.insight }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div style="display: flex; gap: 60px; align-items: flex-start">
+      <div style="flex: 1">
+        <h2>المخاطر والتنبيهات</h2>
+        <ul>
+          {% for risk in risks %}
+          <li>{{ risk }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div style="flex: 1">
+        <h2>التوصيات المقترحة</h2>
+        <ul>
+          {% for rec in recommendations %}
+          <li>{{ rec }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">جميع الحقوق محفوظة. © 2026</div>
+  </body>
+</html>

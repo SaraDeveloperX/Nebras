@@ -1,0 +1,126 @@
+@use 'variables' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-base;
+  color: $color-text;
+  background-color: $color-bg;
+  line-height: 1.6;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Respect user preference for reduced motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Typography Scale (Premium)
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: $space-lg;
+
+  @media (max-width: 768px) {
+    font-size: 2.25rem;
+  }
+}
+
+h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-bottom: $space-md;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: $space-xs;
+}
+
+p {
+  margin-bottom: $space-md;
+  max-width: 65ch;
+  font-size: 0.9375rem; // Micro-tuning for balance
+  line-height: 1.6;
+}
+
+button {
+  font-family: inherit;
+}
+
+// Container
+.container {
+  width: 100%;
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+
+  @media (max-width: 768px) {
+    padding: 0 $space-md;
+  }
+}
+
+// Section spacing
+.section {
+  padding: $space-section 0;
+
+  @media (max-width: 768px) {
+    padding: $space-3xl 0;
+  }
+}
+
+// Scroll reveal animation class
+// Centralized Reveal Animation
+// Centralized Reveal Animation
+// Continuous Scroll Motion
+[data-motion] {
+  opacity: 1 !important; // FORCE OPACITY 1
+  transform: translate3d(0, var(--ty, 0), 0) scale(var(--sc, 1));
+  will-change: transform;
+
+  // No transition, plain logic
+  transition: none;
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+// Focus ring utility
+.focus-ring {
+  &:focus-visible {
+    outline: 2px solid $color-border-strong; // Solid color
+    outline-offset: 2px;
+  }
+}

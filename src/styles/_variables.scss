@@ -1,0 +1,49 @@
+// Typography
+$font-family-base: 'IBM Plex Sans Arabic', sans-serif;
+
+// Colors - High Contrast & Solid (No Transparency)
+$color-text: #2c3245; // Darker, sharper primary text
+$color-text-secondary: #545969; // Strong solid grey for secondary text
+$color-text-muted: #787c8a; // Muted but readable solid grey
+
+$color-bg: #ffffff;
+$color-card: #f5f6f7; // Slightly darker than pure white, distinct from background
+$surface: #f5f6f7;
+
+$color-border: #dbe0e6; // Strong, visible solid border
+$color-border-strong: #cdd2d9; // For emphasis
+
+$color-shadow: #e2e4e8; // Solid shadow color
+
+// Brand Colors (Solid equivalents)
+$color-brand: #00695c;
+$color-brand-bg: #e0f2f1;
+
+// Spacing Scale (8pt grid)
+$space-xs: 0.5rem; // 8px
+$space-sm: 0.75rem; // 12px
+$space-md: 1rem; // 16px
+$space-lg: 1.5rem; // 24px
+$space-xl: 2rem; // 32px
+$space-2xl: 3rem; // 48px
+$space-3xl: 4rem; // 64px
+$space-4xl: 5rem; // 80px
+$space-section: 6rem; // 96px - Section padding
+
+// Container
+$container-width: 1200px;
+$container-padding: 1.5rem;
+
+// Motion
+$ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+$ease-out: cubic-bezier(0, 0, 0.2, 1);
+$ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+$t-fast: 150ms;
+$t-base: 250ms;
+$t-slow: 350ms;
+
+// Borders
+$radius-sm: 8px;
+$radius-md: 16px;
+$radius-lg: 24px;
+$radius-full: 999px;
