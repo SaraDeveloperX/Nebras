@@ -394,7 +394,7 @@ watch(analysisResults, () => {
           <div class="upload__outputs">
             <h4 class="upload__outputs-title">عرض النتائج</h4>
             <ul class="upload__outputs-list">
-              <li>داخل التطبيق: عرض سريع وتفاعلي للنتائج (KPIs، المخاطر، التوصيات).</li>
+              <li>داخل البرنامج: عرض سريع وتفاعلي للنتائج (KPIs، المخاطر، التوصيات).</li>
               <li>بصيغة PDF: تقرير تنفيذي رسمي للمشاركة والإرسال والأرشفة أو العرض على الإدارة.</li>
             </ul>
           </div>
