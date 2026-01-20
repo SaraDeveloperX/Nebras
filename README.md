@@ -28,16 +28,6 @@ Nebras transforms raw financial data into executive-ready insights and professio
 - **Risk Detection** Identifies anomalies such as negative margins and expense spikes
 - **Executive Reporting** Generates board-ready PDF reports with AI-drafted recommendations
 
----
-
-## Report Output
-
-<p align="center">
-  <img src="docs/assets/Report-nebras.jpg" alt="Executive Report" width="720" />
-</p>
-<p align="center"><em>Executive financial report with KPIs, trend analysis, and recommendations.</em></p>
-
----
 
 ## System Architecture
 
@@ -143,3 +133,4 @@ See [API Reference](docs/api.md) for full documentation.
 ## License
 
 This project is licensed under the MIT License.
+
