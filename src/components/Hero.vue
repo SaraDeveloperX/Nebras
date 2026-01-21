@@ -43,7 +43,7 @@ onMounted(() => {
         <div class="hero__reveal-layer" :class="{ 'is-visible': isVisible }">
           <!-- Wrapper for Continuous Breathing -->
           <div class="hero__breath-layer" :class="{ 'is-breathing': isBreathing }">
-            <img src="@/assets/hero.jpg" alt="Financial Analysis Dashboard" class="hero__image" />
+            <img src="@/assets/hero.png" alt="Financial Analysis Dashboard" class="hero__image" />
           </div>
         </div>
       </div>
