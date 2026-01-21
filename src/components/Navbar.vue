@@ -154,7 +154,7 @@ onUnmounted(() => {
   }
 
   &__logo {
-    height: 36px;
+    height: 40px;
     width: auto;
     object-fit: contain;
   }
