@@ -16,20 +16,15 @@ load_dotenv()
 
 app = FastAPI()
 
-# CORS configuration
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://nebras-mauve.vercel.app",
 ]
-
-# Allow any private network IP for mobile/LAN access
-# Regex matches: 192.168.x.x, 10.x.x.x, 172.16.x.x - 172.31.x.x
-origin_regex = r"^http://(192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(1[6-9]|2\d|3[0-1])\.\d+\.\d+)(:\d+)?$"
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
-    allow_origin_regex=origin_regex,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
